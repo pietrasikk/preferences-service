@@ -18,7 +18,7 @@ class NotificationController {
 
     private final NotificationService notificationService;
 
-    @PostMapping(path = "/notification/preferences",
+    @PostMapping(path = "/api/notification/preferences",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public NotificationResponse getUserNotificationPreferences(@RequestBody NotificationRequest notificationRequest) {
