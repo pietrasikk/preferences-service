@@ -5,6 +5,7 @@ import com.manning.tutorial.notification.NotificationPreferencesService.model.No
 import com.manning.tutorial.notification.NotificationPreferencesService.services.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,10 @@ class NotificationController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public NotificationResponse getUserNotificationPreferences(@RequestBody NotificationRequest notificationRequest) {
         return mapResponse(notificationService.getNotificationPreferences(notificationRequest.getCustomerId()));
+    }
+
+    @GetMapping("/api/notification/preferences/healthcheck")
+    public String healthCheck (){
+        return "UP";
     }
 }
