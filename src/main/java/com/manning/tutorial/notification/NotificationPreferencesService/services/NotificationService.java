@@ -4,13 +4,17 @@ import com.manning.tutorial.notification.NotificationPreferencesService.entities
 import com.manning.tutorial.notification.NotificationPreferencesService.model.NotificationPreference;
 import com.manning.tutorial.notification.NotificationPreferencesService.repositories.NotificationRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequiredArgsConstructor
 public class NotificationService {
 
     private final NotificationRepository notificationRepository;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public NotificationPreference getNotificationPreferences(String customerId) {
+        logger.info("In the Notification Preferences API Class");
         return notificationRepository.findByCustomerId(customerId)
                 .map(this::map)
                 .orElse(null);
